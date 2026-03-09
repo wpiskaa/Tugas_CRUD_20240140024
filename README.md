@@ -10,7 +10,7 @@ Request Body :
 {
   "nomorKtp": "20240140024",
   "namaLengkap": "Hafiz Kurniawan",
-  "alamat domisili": "Jln. Raya Sempalai",
+  "alamat": "Jln. Raya Sempalai",
   "tanggalLahir": "2000-01-01",
   "jenisKelamin": "Laki-laki"
 }
@@ -47,7 +47,7 @@ Request Body :
   "message": "Data KTP berhasil dihapus"
 }
 
-Screenshot :
+##Screenshot :
 <img width="1920" height="1032" alt="Screenshot 2026-03-09 143642" src="https://github.com/user-attachments/assets/98f58ca8-d46b-489b-94f4-094047bdba11" />
 <img width="1920" height="1032" alt="Screenshot 2026-03-09 143808" src="https://github.com/user-attachments/assets/a2933f6c-269e-4253-a3ee-b4d3d0a4f4c2" />
 <img width="1920" height="1032" alt="Screenshot 2026-03-09 143835" src="https://github.com/user-attachments/assets/89b0f70a-6298-4790-8956-0b31e9f78b98" />
