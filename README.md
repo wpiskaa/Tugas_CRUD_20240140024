@@ -35,3 +35,8 @@ Dokumentasi ini merinci spesifikasi endpoint REST API untuk sistem manajemen dat
 {
   "message": "Data KTP berhasil dihapus"
 }
+
+Screenshot
+
+<img width="1920" height="1032" alt="Screenshot 2026-03-09 151636" src="https://github.com/user-attachments/assets/77d545dd-2be9-49f6-b991-43ad8a0b6d35" />
+
