@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.KtpEntity;
+import com.example.demo.dto.KtpDTO;
 import com.example.demo.service.KtpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,26 +10,33 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ktp")
-@CrossOrigin(origins = "*")
 public class KtpController {
 
-    @Autowired
-    private KtpService ktpService;
+    private final KtpService ktpService;
 
-    // Tambahkan method POST ini agar 'Simpan Data' tidak 404
+    @Autowired
+    public KtpController(KtpService ktpService) {
+        this.ktpService = ktpService;
+    }
+
     @PostMapping
-    public ResponseEntity<?> addKtp(@RequestBody KtpEntity ktp) {
-        try {
-            return ResponseEntity.ok(ktpService.create(ktp));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<KtpDTO> create(@RequestBody KtpDTO ktpDTO) {
+        return ResponseEntity.ok(ktpService.save(ktpDTO));
     }
 
     @GetMapping
-    public List<KtpEntity> getAllKtp() {
-        return ktpService.findAll();
+    public ResponseEntity<List<KtpDTO>> getAll() {
+        return ResponseEntity.ok(ktpService.findAll());
     }
 
-    // ... tambahkan method PUT dan DELETE jika diperlukan
+    @PutMapping("/{id}")
+    public ResponseEntity<KtpDTO> update(@PathVariable("id") Integer id, @RequestBody KtpDTO ktpDTO) {
+        return ResponseEntity.ok(ktpService.update(id, ktpDTO));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
+        ktpService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

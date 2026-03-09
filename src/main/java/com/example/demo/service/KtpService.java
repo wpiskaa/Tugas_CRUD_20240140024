@@ -1,12 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.KtpEntity;
+import com.example.demo.dto.KtpDTO;
 import java.util.List;
 
 public interface KtpService {
-    KtpEntity create(KtpEntity ktp);
-    List<KtpEntity> findAll();
-    KtpEntity findById(Integer id);
-    KtpEntity update(Integer id, KtpEntity ktp);
+    KtpDTO save(KtpDTO ktpDTO);
+    List<KtpDTO> findAll();
+    KtpDTO findById(Integer id);
+    KtpDTO update(Integer id, KtpDTO ktpDTO);
     void delete(Integer id);
 }

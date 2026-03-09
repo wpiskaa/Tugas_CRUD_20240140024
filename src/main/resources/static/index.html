@@ -3,141 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Manajemen KTP - Premium Edition</title>
+    <title>Sistem Manajemen KTP - Premium</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        :root {
-            --midnight-blue: #0f172a;
-            --apple-gray: #f5f5f7;
-            --accent-blue: #0071e3;
-            --card-bg: rgba(255, 255, 255, 0.8);
-        }
-
-        body {
-            background-color: var(--midnight-blue);
-            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: var(--apple-gray);
-            min-height: 100vh;
-        }
-
-        .container { max-width: 1100px; }
-
-        /* Style ala Apple Card */
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            color: #1d1d1f;
-            padding: 2rem;
-            transition: transform 0.3s ease;
-        }
-
-        h2, h4 { font-weight: 600; letter-spacing: -0.02em; }
-        .text-midnight { color: #1d1d1f; }
-
-        /* Input Style */
-        .form-control, .form-select {
-            border-radius: 12px;
-            border: 1px solid #d2d2d7;
-            padding: 0.6rem 1rem;
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .form-control:focus {
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
-        }
-
-        /* Button ala Apple */
-        .btn-apple {
-            background-color: var(--accent-blue);
-            color: white;
-            border-radius: 980px; /* Pill shape */
-            padding: 0.7rem 1.5rem;
-            font-weight: 500;
-            border: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn-apple:hover {
-            background-color: #0077ed;
-            transform: scale(1.02);
-            color: white;
-        }
-
-        /* Table Style */
-        .table { color: #1d1d1f; }
-        .table thead { border-bottom: 2px solid #d2d2d7; }
-        tr { vertical-align: middle; border-bottom: 1px solid #f2f2f2; }
-
-        .badge-id {
-            background: #e8e8ed;
-            color: #515154;
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
-            font-family: monospace;
-        }
+        body { background-color: #000000; color: #f5f5f7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; padding-top: 50px; }
+        .card { background-color: #1c1c1e; border: none; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .form-control, .form-select { background-color: #2c2c2e; border: 1px solid #3a3a3c; color: #f5f5f7; border-radius: 10px; }
+        .form-control:focus { background-color: #3a3a3c; color: #fff; border-color: #0071e3; box-shadow: none; }
+        .btn-primary { background-color: #0071e3; border: none; border-radius: 10px; padding: 10px 20px; font-weight: 600; }
+        .btn-primary:hover { background-color: #0077ed; }
+        .btn-success { background-color: #34c759; border: none; border-radius: 10px; }
+        .table { color: #f5f5f7; }
+        .badge-id { background-color: #2c2c2e; color: #86868b; padding: 5px 10px; border-radius: 6px; font-family: monospace; }
     </style>
 </head>
-<body class="py-5">
-
+<body>
 <div class="container">
-    <header class="text-center mb-5">
-        <h2 class="display-5">Manajemen KTP</h2>
-        <p class="text-secondary">Elegansi dalam pendataan penduduk.</p>
-    </header>
-
     <div class="row g-4">
         <div class="col-md-5">
-            <div class="glass-card">
-                <h4 id="formTitle" class="mb-4">Daftarkan Penduduk</h4>
+            <div class="card p-4">
+                <h4 id="formTitle" class="mb-4 fw-bold">Daftarkan Penduduk</h4>
                 <form id="ktpForm">
                     <input type="hidden" id="ktpId">
                     <div class="mb-3">
                         <label class="form-label small text-secondary">Nomor KTP</label>
-                        <input type="text" id="nomorKtp" class="form-control" placeholder="16 digit angka" required>
+                        <input type="text" id="nomorKtp" class="form-control" placeholder="16 Digit Nomor KTP" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label small text-secondary">Nama Lengkap</label>
-                        <input type="text" id="namaLengkap" class="form-control" placeholder="Sesuai identitas" required>
+                        <input type="text" id="namaLengkap" class="form-control" placeholder="Sesuai Akta Kelahiran" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label small text-secondary">Alamat</label>
-                        <textarea id="alamat" class="form-control" rows="2" placeholder="Alamat domisili"></textarea>
+                        <textarea id="alamat" class="form-control" rows="2" placeholder="Alamat Domisili" required></textarea>
                     </div>
                     <div class="row">
-                        <div class="col-md-7 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label small text-secondary">Tanggal Lahir</label>
                             <input type="date" id="tanggalLahir" class="form-control" required>
                         </div>
-                        <div class="col-md-5 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label small text-secondary">Gender</label>
-                            <select id="jenisKelamin" class="form-select">
+                            <select id="jenisKelamin" class="form-select" required>
                                 <option value="Laki-laki">Laki-laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <button type="submit" id="btnSubmit" class="btn btn-apple w-100">Simpan Data</button>
-                        <button type="button" id="btnCancel" class="btn btn-light w-100 mt-2" style="border-radius:980px; display:none;" onclick="resetForm()">Batalkan</button>
-                    </div>
+                    <button type="submit" id="btnSubmit" class="btn btn-primary w-100 mt-2">Simpan Data</button>
+                    <button type="button" id="btnCancel" onclick="resetForm()" class="btn btn-link w-100 mt-2 text-secondary text-decoration-none" style="display:none;">Batalkan</button>
                 </form>
             </div>
         </div>
 
         <div class="col-md-7">
-            <div class="glass-card">
-                <h4 class="mb-4">Database Penduduk</h4>
+            <div class="card p-4">
+                <h4 class="mb-4 fw-bold">Database Penduduk</h4>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover mt-2">
                         <thead>
-                        <tr class="text-secondary small">
+                        <tr class="text-secondary small border-bottom border-dark">
                             <th>NOMOR KTP</th>
                             <th>NAMA</th>
                             <th class="text-end">AKSI</th>
@@ -153,19 +79,22 @@
 </div>
 
 <script>
-    // Logika JavaScript (GET, POST, PUT, DELETE) tetap sama seperti sebelumnya
+    // Memuat data dari server
     function loadData() {
         $.get('/ktp', function(data) {
             let rows = '';
             data.forEach(ktp => {
                 const ktpStr = JSON.stringify(ktp).replace(/"/g, '&quot;');
                 rows += `
-                    <tr>
+                    <tr class="align-middle">
                         <td><span class="badge-id">${ktp.nomorKtp}</span></td>
-                        <td><div class="fw-bold">${ktp.namaLengkap}</div><div class="small text-secondary">${ktp.jenisKelamin}</div></td>
+                        <td>
+                            <div class="fw-bold">${ktp.namaLengkap}</div>
+                            <div class="small text-secondary">${ktp.jenisKelamin}</div>
+                        </td>
                         <td class="text-end">
-                            <button onclick="fillForm(${ktpStr})" class="btn btn-link btn-sm text-decoration-none text-primary">Edit</button>
-                            <button onclick="deleteData(${ktp.id})" class="btn btn-link btn-sm text-decoration-none text-danger">Hapus</button>
+                            <button onclick="fillForm(${ktpStr})" class="btn btn-link btn-sm text-primary text-decoration-none">Edit</button>
+                            <button onclick="deleteData(${ktp.id})" class="btn btn-link btn-sm text-danger text-decoration-none">Hapus</button>
                         </td>
                     </tr>`;
             });
@@ -173,6 +102,7 @@
         });
     }
 
+    // Mengisi form untuk proses Edit
     function fillForm(ktp) {
         $('#ktpId').val(ktp.id);
         $('#nomorKtp').val(ktp.nomorKtp);
@@ -182,21 +112,25 @@
         $('#jenisKelamin').val(ktp.jenisKelamin);
 
         $('#formTitle').text('Perbarui Data');
-        $('#btnSubmit').text('Update Sekarang').css('background-color', '#34c759');
+        $('#btnSubmit').text('Update Sekarang').addClass('btn-success').removeClass('btn-primary');
         $('#btnCancel').show();
     }
 
+    // Mengatur ulang form ke kondisi awal
     function resetForm() {
         $('#ktpForm')[0].reset();
         $('#ktpId').val('');
         $('#formTitle').text('Daftarkan Penduduk');
-        $('#btnSubmit').text('Simpan Data').css('background-color', '#0071e3');
+        $('#btnSubmit').text('Simpan Data').addClass('btn-primary').removeClass('btn-success');
         $('#btnCancel').hide();
     }
 
+    // Menangani Submit Form (Create & Update)
     $('#ktpForm').submit(function(e) {
         e.preventDefault();
         const id = $('#ktpId').val();
+
+        // Penentuan URL dan Method
         const url = id ? '/ktp/' + id : '/ktp';
         const method = id ? 'PUT' : 'POST';
 
@@ -214,21 +148,28 @@
             contentType: 'application/json',
             data: JSON.stringify(payload),
             success: function() {
-                alert('Selesai! Data berhasil diproses.');
+                alert(id ? 'Data KTP berhasil diperbarui' : 'Data KTP berhasil disimpan');
                 resetForm();
                 loadData();
             },
-            error: function(err) { alert('Maaf, terjadi kesalahan: ' + err.responseText); }
+            error: function(xhr) {
+                alert('Error ' + xhr.status + ': Terjadi kesalahan pada server');
+            }
         });
     });
 
+    // Menangani Penghapusan Data
     function deleteData(id) {
-        if(confirm('Data ini akan dihapus permanen. Lanjutkan?')) {
+        if (confirm('Data ini akan dihapus permanent, lanjutkan?')) {
             $.ajax({
                 url: '/ktp/' + id,
                 type: 'DELETE',
                 success: function() {
+                    alert('Data KTP berhasil dihapus');
                     loadData();
+                },
+                error: function(err) {
+                    alert('Gagal menghapus data: ' + err.status);
                 }
             });
         }
